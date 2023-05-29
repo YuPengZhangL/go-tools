@@ -1,5 +1,6 @@
 package log
 
+// logger日志包
 import (
 	"encoding/json"
 	"fmt"
@@ -118,6 +119,7 @@ func FatalJ(args ...any) {
 
 func Print(args ...any) {
 	logger.Print(args...)
+
 }
 
 func Printf(format string, args ...any) {
@@ -135,4 +137,10 @@ func jtimestamp() string {
 func jpos() string {
 	_, f, l, _ := runtime.Caller(2)
 	return fmt.Sprintf("%s:%d", f, l)
+}
+
+func main(args ...any) {
+	FatalF("fatal", args...)
+	FatalJ(args...)
+	Fatal(args...)
 }
